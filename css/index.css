@@ -1,0 +1,150 @@
+.lazycontainer {
+  margin: 0 0.5em;
+}
+.lazycontainer:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.column {
+  box-sizing: border-box;
+  float: left;
+  width: 50%;
+  padding: 0 0.4em;
+}
+@media only screen and (min-width: 85em) {
+  .lazycontainer > * {
+    width: calc(100% / 3);
+  }
+}
+.card {
+  margin-bottom: 1.2em;
+  outline: 3px solid #000;
+}
+.card a {
+  display: block;
+}
+.card a .lazyImageBox {
+/* height: xxx;  如果是需要进行图片延迟加载，在图片不显示的时候，我们要让盒子的高度等于图片的高度，这样才能把盒子撑开（服务器返回给我们的数据中，一定要包含图片的高度和宽度） */
+  background: #f4f4f4;
+  overflow: hidden;
+  position: relative;
+}
+.card a .lazyImageBox img {
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.card a .lazyImageBox section {
+  width: calc(100% - 0.4em - 6px);
+  position: absolute;
+  transform: translate(0, -100%);
+  padding: 0.5em 0.5em;
+  visibility: hidden;
+  color: #fff;
+  line-height: 1em;
+  background-image: linear-gradient(0, #000, rgba(0,0,0,0.7) 40%, rgba(255,255,255,0));
+}
+.card a .lazyImageBox section h2 {
+  margin-bottom: 0.5em;
+}
+.card a .lazyImageBox section p {
+  font-size: 75%;
+}
+.card a .lazyImageBox:hover img {
+  opacity: 0;
+}
+.card a .lazyImageBox:hover section {
+  visibility: visible;
+}
+#index {
+  color: #fff;
+  background: #000;
+  height: 100vh;
+}
+#title,
+#name {
+  text-align: center;
+}
+#title {
+  padding: 20vh 0 10vh 0;
+  font-size: 5em;
+  color: #f00;
+}
+@media only screen and (min-width: 87.5em) {
+  #title {
+    padding: 20vh 0 15vh 0;
+  }
+}
+#name {
+  padding-top: 5vh;
+  font-weight: bold;
+  font-size: 1.3em;
+}
+.home-cards-inner {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 60%;
+  background: url("images/homecard.png") no-repeat center;
+  background-size: contain;
+  box-sizing: border-box;
+}
+@media only screen and (min-width: 125em) {
+  .home-cards-inner {
+    width: 85%;
+  }
+}
+.home-cards-inner .left {
+  flex: 0 1 auto;
+  width: calc(100% / 3);
+  display: flex;
+  flex-direction: column;
+  margin: 0.15em 0 0.15em 0.3em;
+}
+.home-cards-inner .left .card {
+  margin: 0.15em 0;
+  height: 50%;
+  outline: 0.3em solid #fff;
+  border: 0.2em solid #000;
+}
+.home-cards-inner .right {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin: 0.15em;
+}
+.home-cards-inner .right .card-outer {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
+.home-cards-inner .right .card {
+  flex: 1 0 auto;
+  margin: 0.15em;
+  outline: 0.3em solid #fff;
+  text-align: center;
+  border: 0.2em solid #000;
+}
+.home-cards-inner a {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  position: relative;
+}
+.home-cards-inner span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+.card:hover {
+  background-color: rgba(0,0,0,0.7);
+}
+.card:hover span {
+  visibility: visible;
+}

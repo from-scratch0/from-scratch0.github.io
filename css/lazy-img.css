@@ -1,0 +1,59 @@
+.lazycontainer {
+  margin: 0 0.5em;
+}
+.lazycontainer:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.column {
+  box-sizing: border-box;
+  float: left;
+  width: 50%;
+  padding: 0 0.4em;
+}
+@media only screen and (min-width: 85em) {
+  .lazycontainer > * {
+    width: calc(100% / 3);
+  }
+}
+.card {
+  margin-bottom: 1.2em;
+  outline: 3px solid #000;
+}
+.card a {
+  display: block;
+}
+.card a .lazyImageBox {
+/* height: xxx;  如果是需要进行图片延迟加载，在图片不显示的时候，我们要让盒子的高度等于图片的高度，这样才能把盒子撑开（服务器返回给我们的数据中，一定要包含图片的高度和宽度） */
+  background: #f4f4f4;
+  overflow: hidden;
+  position: relative;
+}
+.card a .lazyImageBox img {
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.card a .lazyImageBox section {
+  width: calc(100% - 0.4em - 6px);
+  position: absolute;
+  transform: translate(0, -100%);
+  padding: 0.5em 0.5em;
+  visibility: hidden;
+  color: #fff;
+  line-height: 1em;
+  background-image: linear-gradient(0, #000, rgba(0,0,0,0.7) 40%, rgba(255,255,255,0));
+}
+.card a .lazyImageBox section h2 {
+  margin-bottom: 0.5em;
+}
+.card a .lazyImageBox section p {
+  font-size: 75%;
+}
+.card a .lazyImageBox:hover img {
+  opacity: 0;
+}
+.card a .lazyImageBox:hover section {
+  visibility: visible;
+}

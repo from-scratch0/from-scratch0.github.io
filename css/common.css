@@ -1,0 +1,34 @@
+.object-wrapper {
+  display: block;
+  width: 100%;
+  height: 0;
+}
+.wrapper45 {
+  padding-bottom: 50%;
+}
+.wrapper30 {
+  width: calc(100% - 0.8em);
+  padding-top: 14%;
+  padding-bottom: 14%;
+}
+.cover-card {
+  margin: 0 0.4em 1.5em 0.4em;
+  text-align: end;
+  font-style: oblique;
+  vertical-align: text-bottom;
+  outline: 3px solid #000;
+}
+.cover-card span {
+  margin-right: 1.5em;
+  font-size: 2rem;
+}
+.post-cover-card {
+  margin: 0 0.4em 1.5em 0.4em;
+  text-align: center;
+  font-style: oblique;
+  outline: 3px solid #000;
+}
+.post-cover-card span {
+  font-size: 1rem;
+  color: #808080;
+}

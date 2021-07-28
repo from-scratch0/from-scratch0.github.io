@@ -1,0 +1,565 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>HTML5 API整理 | From Scratch</title><link rel="icon" href="/css/images/favicon.ico"><link rel="stylesheet" href="/css/zeros.css"><link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.css"><script src="/js/zeros.js" defer></script><link rel="stylesheet" href="/css/tocbot.css"><script src="/js/tocbot.js" defer></script><script>window.addEventListener('DOMContentLoaded', () => {
+  tocbot.init({
+    // Where to render the table of contents.
+    tocSelector: '.toc__content',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: '.article__content',
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    // For headings inside relative or absolute positioned containers within content.
+    hasInnerContainers: true,
+    orderedList: false,
+    collapseDepth: 2,
+  });
+})</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="mask-border"></div><div class="container"><div class="container-inner"><div id="menu-outer"><nav id="menu-inner1"> <a href="/"><i class="fa fa-book"></i></a><a href="/">作品集</a><a href="/">码经</a><a href="/">草图本</a><a href="/about/me">关于我</a></nav><nav id="menu-inner2"><a target="_blank" rel="noopener" href="https://github.com/from-scratch0"><i class="fa fa-github fa-lg"></i></a></nav></div><div class="segment"></div><div id="content-outer"><div id="content-inner"><div class="main"><div class="main__2-col"><article class="post-view__article"><div class="article__infomation"><div class="posts-item"> <h1><a href="">HTML5 API整理  </a></h1></div></div><div class="article__content"><h1 id="HTML5-API整理"><a href="#HTML5-API整理" class="headerlink" title="HTML5 API整理"></a>HTML5 API整理</h1><h2 id="HTML-elements"><a href="#HTML-elements" class="headerlink" title="HTML elements"></a>HTML elements</h2><h3 id="文档元数据"><a href="#文档元数据" class="headerlink" title="文档元数据"></a>文档元数据</h3><h3 id="内容分区"><a href="#内容分区" class="headerlink" title="内容分区"></a>内容分区</h3><table>
+<thead>
+<tr>
+<th align="left">元素</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>&lt;article&gt;</code>*</td>
+<td>表示一个完整的、自成一体的内容块，比如博客文章、新闻报道、用户评论、论坛帖子</td>
+</tr>
+<tr>
+<td align="left"><code>&lt;aside&gt;</code>*</td>
+<td>添加附注，可以用来介绍另一个相关话题、解释文档中某个观点；或广告、相关内容链接、醒目引文</td>
+</tr>
+<tr>
+<td align="left"><code>&lt;header&gt;</code>*</td>
+<td></td>
+</tr>
+<tr>
+<td align="left"><code>&lt;h1&gt;</code>–<code>&lt;h6&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td align="left"><code>&lt;hgroup&gt;</code>*</td>
+<td>标注副标题，结构上只关注顶级标题，其它标题会显示在浏览器中，但不会被列入文档纲要</td>
+</tr>
+<tr>
+<td align="left"><code>&lt;main&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td align="left"><code>&lt;footer&gt;</code>*</td>
+<td></td>
+</tr>
+<tr>
+<td align="left"><code>&lt;nav&gt;</code>*</td>
+<td>标注导航链接，目录及索引</td>
+</tr>
+<tr>
+<td align="left"><code>&lt;section&gt;</code>*</td>
+<td>包含在HTML文档中的独立部分</td>
+</tr>
+</tbody></table>
+<h3 id="文本内容"><a href="#文本内容" class="headerlink" title="文本内容"></a>文本内容</h3><table>
+<thead>
+<tr>
+<th>元素</th>
+<th></th>
+<th>属性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;div&gt;</code></td>
+<td>通用型的流内容容器</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;p&gt;</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Multimedia_and_embedding/Images_in_HTML#%E9%80%9A%E8%BF%87%E4%B8%BA%E5%9B%BE%E7%89%87%E6%90%AD%E9%85%8D%E8%AF%B4%E6%98%8E%E6%96%87%E5%AD%97%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9D%A5%E8%A7%A3%E8%AF%B4%E5%9B%BE%E7%89%87"><code>&lt;figure&gt;</code></a>*</td>
+<td>添加插图，用<code>&lt;figcaption&gt;</code>添加图题或说明</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;figcaption&gt;</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;blockquote&gt;</code></td>
+<td>引用内容，可以将原内容的出处 URL 地址设置到 cite 特性上，若要以文本的形式告知读者引文的出处时，可以通过 <code>cite</code> 元素</td>
+<td><code>cite</code></td>
+</tr>
+<tr>
+<td><code>&lt;hr&gt;</code></td>
+<td>主题划分</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;pre&gt;</code></td>
+<td>预定义格式文本</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;ul&gt;</code></td>
+<td>无序列表</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;ol&gt;</code></td>
+<td>有序列表，通常渲染为一个带编号的列表</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;li&gt;</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;dl&gt;</code></td>
+<td>描述列表，包含术语定义以及描述</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;dt&gt;</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;dd&gt;</code></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="内联文本语义"><a href="#内联文本语义" class="headerlink" title="内联文本语义"></a>内联文本语义</h3><table>
+<thead>
+<tr>
+<th>元素</th>
+<th></th>
+<th>属性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;time&gt;</code>*</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;mark&gt;</code>*</td>
+<td>突出显示</td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>&lt;a&gt;</code></strong></td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a#%E5%B1%9E%E6%80%A7"><strong><code>&lt;a&gt;</code>属性</strong></a></td>
+</tr>
+<tr>
+<td><code>&lt;abbr&gt;</code></td>
+<td>缩写</td>
+<td><code>title</code></td>
+</tr>
+<tr>
+<td><code>&lt;cite&gt;</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;q&gt;</code></td>
+<td>行内引用的文本</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;code&gt;</code></td>
+<td>以浏览器的默认等宽字体显示</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;data&gt;</code></td>
+<td></td>
+<td><code>value</code></td>
+</tr>
+<tr>
+<td><code>&lt;em&gt;</code></td>
+<td>需要用户着重阅读</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;i&gt;</code></td>
+<td>需要区分，斜体显示</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;u&gt;</code></td>
+<td>默认实线下划线</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;strong&gt;</code></td>
+<td>重要文本，粗体显示</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;sub&gt;</code></td>
+<td>下标</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;sup&gt;</code></td>
+<td>上标</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;small&gt;</code></td>
+<td>边注释和附属细则，將使文本的字体变小一号</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;span&gt;</code></td>
+<td>与 <code>div</code> 元素相似，但 <code>div</code> 是一个块元素而 <code>&lt;span&gt;</code> 则是行内元素</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;kbd&gt;</code></td>
+<td>表示用户输入，以浏览器的默认monospace字体显示</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;del&gt;</code></td>
+<td>被删除的文字内容</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;iframe&gt;</code></td>
+<td>将另一个HTML页面嵌入到当前页面中</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="图片-amp-多媒体"><a href="#图片-amp-多媒体" class="headerlink" title="图片&amp;多媒体"></a>图片&amp;多媒体</h3><table>
+<thead>
+<tr>
+<th>元素</th>
+<th></th>
+<th>属性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;img&gt;</code></td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img#%E5%B1%9E%E6%80%A7"><strong><code>&lt;img&gt;</code>属性</strong></a></td>
+</tr>
+<tr>
+<td><code>&lt;video&gt;</code>*</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;audio&gt;</code>*</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;track&gt;</code></td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/track#%E5%B1%9E%E6%80%A7"><code>&lt;track&gt;</code>属性</a></td>
+</tr>
+<tr>
+<td><code>&lt;map&gt;</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;area&gt;</code></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="内嵌内容"><a href="#内嵌内容" class="headerlink" title="内嵌内容"></a>内嵌内容</h3><h3 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h3><table>
+<thead>
+<tr>
+<th>元素</th>
+<th></th>
+<th>属性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;canvas&gt;</code>*</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;script&gt;</code></td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script#%E5%B1%9E%E6%80%A7"><code>&lt;script&gt;</code>属性</a></td>
+</tr>
+<tr>
+<td><code>&lt;noscript&gt;</code></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><table>
+<thead>
+<tr>
+<th>元素</th>
+<th></th>
+<th>属性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>table</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;caption&gt;</code></td>
+<td>表格的标题</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;colgroup&gt;</code></td>
+<td>表格列组</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;col&gt;</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;thead&gt;</code></td>
+<td>表格的列头</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;tr&gt;</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;th&gt;</code></td>
+<td></td>
+<td><code>colspan</code> <code>rowspan</code></td>
+</tr>
+<tr>
+<td><code>&lt;tbody&gt;</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;td&gt;</code></td>
+<td></td>
+<td><code>colspan</code> <code>rowspan</code></td>
+</tr>
+</tbody></table>
+<h3 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h3><table>
+<thead>
+<tr>
+<th>元素</th>
+<th></th>
+<th>属性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;form&gt;</code></td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form#%E5%B1%9E%E6%80%A7"><strong><code>&lt;form&gt;</code>属性</strong></a></td>
+</tr>
+<tr>
+<td><code>&lt;fieldset&gt;</code></td>
+<td>对表单中的控制元素进行分组</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;legend&gt;</code></td>
+<td>表示其父元素 <code>fieldset</code> 的内容标题</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;input&gt;</code></td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#%3Cinput%3E_types"><code>type</code></a> <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#%E5%B1%9E%E6%80%A7">其它属性</a></td>
+</tr>
+<tr>
+<td><code>&lt;label&gt;</code></td>
+<td></td>
+<td><code>for</code> <code>form</code></td>
+</tr>
+<tr>
+<td><code>&lt;select&gt;</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;optgroup&gt;</code></td>
+<td>为<code>select</code> 元素中的选项创建分组</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;datalist&gt;</code>*</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;option&gt;</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;output&gt;</code>*</td>
+<td>表示计算或用户操作的结果</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;textarea&gt;</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;progress&gt;</code>*</td>
+<td>完成进度，显示为一个进度条形式</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="lt-input-gt-type"><a href="#lt-input-gt-type" class="headerlink" title="&lt;input&gt;type"></a><code>&lt;input&gt;</code>type</h4><table>
+<thead>
+<tr>
+<th>type</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>button</code></td>
+<td>没有默认行为的按钮，上面显示 <code>value</code> 属性的值</td>
+</tr>
+<tr>
+<td><code>checkbox</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>color</code>*</td>
+<td></td>
+</tr>
+<tr>
+<td><code>date</code>*</td>
+<td>日期，不包括时间</td>
+</tr>
+<tr>
+<td><code>month</code>*</td>
+<td>年和月</td>
+</tr>
+<tr>
+<td><code>week</code></td>
+<td>年和周</td>
+</tr>
+<tr>
+<td><code>datetime-local</code>*</td>
+<td>日期和时间</td>
+</tr>
+<tr>
+<td><code>time</code>*</td>
+<td></td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>file</code></td>
+<td>选择文件，使用<code>accept</code>属性规定控件能选择的文件类型</td>
+</tr>
+<tr>
+<td><code>image</code></td>
+<td>带图像的 <code>submit</code> 按钮</td>
+</tr>
+<tr>
+<td><code>number</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>radio</code></td>
+<td>单选按钮，允许在多个拥有相同<code>name</code>值的选项中选中其中一个</td>
+</tr>
+<tr>
+<td><code>range</code>*</td>
+<td>范围组件，同时使用<code>htmlattrdefmin</code>和 <code>htmlattrdefmax</code>来规定值的范围</td>
+</tr>
+<tr>
+<td><code>reset</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>search</code>*</td>
+<td></td>
+</tr>
+<tr>
+<td><code>submit</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tel</code>*</td>
+<td></td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>url</code>*</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="交互元素"><a href="#交互元素" class="headerlink" title="交互元素"></a>交互元素</h3><table>
+<thead>
+<tr>
+<th>元素</th>
+<th></th>
+<th>属性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;details&gt;</code>*</td>
+<td>创建一个挂件，仅在被切换成展开状态时，它才会显示内含的信息</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;summary&gt;</code></td>
+<td><code>details</code>元素的一个内容的摘要，标题或图例</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="行内元素-块级元素"><a href="#行内元素-块级元素" class="headerlink" title="行内元素 / 块级元素"></a>行内元素 / 块级元素</h3><h4 id="行内元素"><a href="#行内元素" class="headerlink" title="行内元素"></a>行内元素</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/b">b</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/big">big</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/i">i</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/small">small</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/tt">tt</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/abbr">abbr</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/acronym">acronym</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/cite">cite</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/code">code</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dfn">dfn</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/em">em</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/kbd">kbd</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/strong">strong</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/samp">samp</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/var">var</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a">a</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/bdo">bdo</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/br">br</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Img">img</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/map">map</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/object">object</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/q">q</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Script">script</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/span">span</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/sub">sub</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/sup">sup</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/button">button</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input">input</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/label">label</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select">select</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea">textarea</a></li>
+</ul>
+<h4 id="块级元素"><a href="#块级元素" class="headerlink" title="块级元素"></a>块级元素</h4><ul>
+<li><p><code>&lt;address&gt;</code> <code>&lt;article&gt;</code> <code>&lt;aside&gt;</code>  <code>&lt;blockquote&gt;</code> <code>&lt;header&gt;</code>  <code>&lt;footer&gt;</code> <code>&lt;h1&gt;</code>-<code>&lt;h6&gt;</code>  <code>&lt;hgroup&gt;</code>  <code>&lt;hr&gt;</code>  <code>&lt;noscript&gt;</code>  <code>&lt;section&gt;</code> </p>
+</li>
+<li><p><code>&lt;div&gt;</code>  <code>&lt;dd&gt;</code>  <code>&lt;dl&gt;</code>  <code>&lt;fieldset&gt;</code>  <code>&lt;figcaption&gt;</code>  <code>&lt;figure&gt;</code> <code>&lt;form&gt;</code>  <code>&lt;ol&gt;</code>  <code>&lt;output&gt;</code>  <code>&lt;p&gt;</code> <code>&lt;pre&gt;</code>  <code>&lt;table&gt;</code>  <code>&lt;tfoot&gt;</code>  </p>
+</li>
+<li><p><code>&lt;audio&gt;</code>  <code>&lt;canvas&gt;</code>  <code>&lt;video&gt;</code> </p>
+</li>
+</ul>
+<h3 id="废除的元素"><a href="#废除的元素" class="headerlink" title="废除的元素"></a>废除的元素</h3><ul>
+<li><p>能用CSS替代的元素</p>
+<p>如<code>&lt;big&gt;</code> <code>&lt;center&gt;</code> <code>&lt;font&gt;</code> <code>&lt;strike&gt;</code> <code>&lt;tt&gt;</code></p>
+</li>
+<li><p><code>frame</code>框架</p>
+<p><code>&lt;frameset&gt;</code> <code>&lt;frame&gt;</code> <code>&lt;noframes&gt;</code></p>
+</li>
+<li><p>仅部分浏览器支持的元素</p>
+</li>
+<li><p>其它</p>
+<p><code>&lt;dir&gt;</code> =&gt; <code>&lt;ul&gt;</code></p>
+<p><code>&lt;xmp&gt;</code> =&gt; <code>&lt;code&gt;</code></p>
+</li>
+</ul>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><h3 id="全局属性"><a href="#全局属性" class="headerlink" title="全局属性"></a>全局属性</h3><p><code>contentEditable</code></p>
+<p><code>hidden</code></p>
+<p><code>spellcheck</code></p>
+<p><code>tabindex</code></p>
+</div></article><div class="post-sidebar"> <div class="sidebar"><div class="tocbot"><h2>纲要</h2><div class="toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML5-API%E6%95%B4%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">HTML5 API整理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML-elements"><span class="toc-number">1.1.</span> <span class="toc-text">HTML elements</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E5%85%83%E6%95%B0%E6%8D%AE"><span class="toc-number">1.1.1.</span> <span class="toc-text">文档元数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AE%B9%E5%88%86%E5%8C%BA"><span class="toc-number">1.1.2.</span> <span class="toc-text">内容分区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9"><span class="toc-number">1.1.3.</span> <span class="toc-text">文本内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E8%81%94%E6%96%87%E6%9C%AC%E8%AF%AD%E4%B9%89"><span class="toc-number">1.1.4.</span> <span class="toc-text">内联文本语义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%89%87-amp-%E5%A4%9A%E5%AA%92%E4%BD%93"><span class="toc-number">1.1.5.</span> <span class="toc-text">图片&amp;多媒体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%B5%8C%E5%86%85%E5%AE%B9"><span class="toc-number">1.1.6.</span> <span class="toc-text">内嵌内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC"><span class="toc-number">1.1.7.</span> <span class="toc-text">脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC"><span class="toc-number">1.1.8.</span> <span class="toc-text">表格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E5%8D%95"><span class="toc-number">1.1.9.</span> <span class="toc-text">表单</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#lt-input-gt-type"><span class="toc-number">1.1.9.1.</span> <span class="toc-text">&lt;input&gt;type</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E4%BA%92%E5%85%83%E7%B4%A0"><span class="toc-number">1.1.10.</span> <span class="toc-text">交互元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0-%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0"><span class="toc-number">1.1.11.</span> <span class="toc-text">行内元素 &#x2F; 块级元素</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0"><span class="toc-number">1.1.11.1.</span> <span class="toc-text">行内元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0"><span class="toc-number">1.1.11.2.</span> <span class="toc-text">块级元素</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%9F%E9%99%A4%E7%9A%84%E5%85%83%E7%B4%A0"><span class="toc-number">1.1.12.</span> <span class="toc-text">废除的元素</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7"><span class="toc-number">1.2.</span> <span class="toc-text">属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%B1%9E%E6%80%A7"><span class="toc-number">1.2.1.</span> <span class="toc-text">全局属性</span></a></li></ol></li></ol></li></ol></div></div><h2>分类</h2><div class="sidebar__categories"><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/codes/">codes</a></li></ul></div><h2>标签</h2><div class="sidebar__tags"><ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul></div><h2>归档</h2><div class="sidebar__archives"><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li></ul></div></div></div></div><div id="paginator"></div></div></div></div></div></div><div id="bottom-outer"><div id="bottom-inner"><span>©️2021 Designed By </span><span> 玉面小飞狐 </span><span>Powered By </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span>.</span></div></div></body></html>

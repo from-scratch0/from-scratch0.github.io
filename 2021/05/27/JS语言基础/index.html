@@ -1,0 +1,434 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>JS语言基础 | From Scratch</title><link rel="icon" href="/css/images/favicon.ico"><link rel="stylesheet" href="/css/zeros.css"><link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.css"><script src="/js/zeros.js" defer></script><link rel="stylesheet" href="/css/tocbot.css"><script src="/js/tocbot.js" defer></script><script>window.addEventListener('DOMContentLoaded', () => {
+  tocbot.init({
+    // Where to render the table of contents.
+    tocSelector: '.toc__content',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: '.article__content',
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    // For headings inside relative or absolute positioned containers within content.
+    hasInnerContainers: true,
+    orderedList: false,
+    collapseDepth: 2,
+  });
+})</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="mask-border"></div><div class="container"><div class="container-inner"><div id="menu-outer"><nav id="menu-inner1"> <a href="/"><i class="fa fa-book"></i></a><a href="/">作品集</a><a href="/">码经</a><a href="/">草图本</a><a href="/about/me">关于我</a></nav><nav id="menu-inner2"><a target="_blank" rel="noopener" href="https://github.com/from-scratch0"><i class="fa fa-github fa-lg"></i></a></nav></div><div class="segment"></div><div id="content-outer"><div id="content-inner"><div class="main"><div class="main__2-col"><article class="post-view__article"><div class="article__infomation"><div class="posts-item"> <h1><a href="">JS语言基础  </a></h1></div></div><div class="article__content"><h2 id="var-let-const"><a href="#var-let-const" class="headerlink" title="var / let / const"></a>var / let / const</h2><p><strong><code>var</code></strong></p>
+<ol>
+<li><p>可以重复声明</p>
+</li>
+<li><p>不能定义常量</p>
+</li>
+<li><p>不支持块级作用域</p>
+</li>
+</ol>
+<p><strong><code>let</code></strong></p>
+<ol>
+<li><p>不存在变量提升</p>
+<p><code>var</code>命令会发生“变量提升”现象，即变量可以在声明之前使用</p>
+<p><code>let</code>命令所声明的变量一定要在声明后使用，否则报错</p>
+<blockquote>
+<p><strong>变量提升</strong></p>
+<p>函数在运行的时候，会首先创建执行上下文，然后将执行上下文入栈，然后当此执行上下文处于栈顶时，开始运行执行上下文。</p>
+<p>在<u>创建执行上下文</u>的过程中会做三件事：<strong>创建变量对象，创建作用域链，确定 this 指向</strong>，其中创建变量对象的过程中，首先会为 arguments 创建一个属性，值为 arguments，然后会扫码 function 函数声明，创建一个同名属性，值为函数的引用，接着会扫码 var 变量声明，创建一个同名属性，值为 undefined，这就是变量提升。</p>
+</blockquote>
+</li>
+<li><p>暂时性死区</p>
+<p>ES6 明确规定，如果区块中存在<code>let</code>和<code>const</code>命令，这个区块对这些命令声明的变量，从一开始就形成了封闭作用域。凡是在声明之前就使用这些变量，就会报错</p>
+<p>ES6 规定暂时性死区和<code>let</code>、<code>const</code>语句不出现变量提升；暂时性死区的本质就是，只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用该变量</p>
+</li>
+<li><p>不允许重复声明</p>
+<p><code>let</code>不允许在相同作用域内，重复声明同一个变量</p>
+</li>
+<li><p>块级作用域</p>
+<p>没有块级作用域：内层变量可能会覆盖外层变量；用来计数的循环变量泄露为全局变量</p>
+<p>考虑到环境导致的行为差异太大，应该避免在块级作用域内声明函数，如果确实需要，也应该写成函数表达式，而不是函数声明语句（函数声明类似于<code>var</code>，即会提升到作用域的头部）</p>
+</li>
+</ol>
+<p><strong><code>const</code></strong></p>
+<ol>
+<li>一旦声明变量，就必须立即初始化</li>
+<li><code>const</code>实际上保证的是变量指向的那个内存地址所保存的数据不得改动：对于基本类型值（数值、字符串、布尔值）保存在变量指向的那个内存地址，因此等同于常量；但对于复合类型值（主要是对象和数组），变量指向的内存地址，保存的只是一个指向实际数据的指针，<code>const</code>只能保证这个指针是固定的（即总是指向另一个固定的地址），至于它指向的数据结构是不是可变的，就完全不能控制了。</li>
+</ol>
+<p>ES5 只有两种声明变量的方法：<code>var</code>命令和<code>function</code>命令。ES6 除了添加<code>let</code>和<code>const</code>命令，后面章节还会提到，另外两种声明变量的方法：<code>import</code>命令和<code>class</code>命令。所以，ES6 一共有 6 种声明变量的方法。</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h3><h4 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a><code>Undefined</code></h4><p>为了区分空对象指针和未经初始化的变量</p>
+<p><em>未初始化的变量</em> 和<em>未声明的变量</em> 执行<code>typeof</code>都返回”<code>undefined</code>“值<br>若能显式地初始化变量，当<code>typeof</code>返回”<code>undefined</code>“时，就能知道该变量还没声明，而不是没初始化</p>
+<h4 id="Null"><a href="#Null" class="headerlink" title="Null"></a><code>Null</code></h4><p>null值表示一个空对象指针</p>
+<p><code>typeof</code>检测<code>null</code>值时会返回“<code>object</code>”<br>若定义的变量将来准备用于保存对象，最好将该变量初始化为<code>null</code>而不是其它</p>
+<blockquote>
+<p>虽然 <code>typeof null</code> 会输出 <code>object</code>，但是这只是 JS 存在的一个悠久 Bug</p>
+<p>在 JS 的最初版本中使用的是 32 位系统，为了性能考虑使用低位存储变量的类型信息，000 开头代表是对象然而 null 表示为全零，所以将它错误的判断为 object </p>
+</blockquote>
+<h4 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a><code>Boolean</code></h4><h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a><code>Number</code></h4><p><code>NaN</code>与任何值都不相等，包括其本身</p>
+<h4 id="String"><a href="#String" class="headerlink" title="String"></a><code>String</code></h4><p>ES中字符串不可变，要改变某个变量保存的字符串，需要销毁原来的字符串，再用另一个新字符串填充该变量</p>
+<h4 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a><code>Symbol</code></h4><p>ES6 引入<code>Symbol</code>的原因：从根本上防止属性名的冲突</p>
+<p>符号类型是唯一的并且是不可修改的, 并且也可以用来作为<code>Object</code>的<code>key</code>的值；在某些语言当中也有类似的原子类型(<code>Atoms</code>). 你也可以认为为它们是C里面的枚举类型</p>
+<p>主要用来提供遍历接口，布置了 <code>symbol.iterator</code> 的对象才可以使用 <code>for···of</code> 循环，可以统一处理数据结构</p>
+<p><code>Symbol.for()</code> 可以在全局访问 <code>symbol</code></p>
+<h4 id="BigInt"><a href="#BigInt" class="headerlink" title="BigInt"></a><code>BigInt</code></h4><ol>
+<li><p>什么是<code>BigInt</code>?</p>
+<p>BigInt是一种新的数据类型，用于当整数值大于<code>Number</code>数据类型支持的范围时；这种数据类型允许我们安全地对<u>大整数</u>执行算术操作，表示高分辨率的时间戳、使用大整数id等等，而不需要使用库</p>
+</li>
+<li><p>为什么需要<code>BigInt</code>?</p>
+<p>在JS中，所有的数字都以双精度64位浮点格式表示，这导致JS中的Number无法精确表示非常大的整数，它会将非常大的整数四舍五入，确切地说，JS中的Number类型只能安全地表示 **-9007199254740991 (-(2^53-1))  ~ 9007199254740991 (2^53-1)**，任何超出此范围的整数值都可能失去精度</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">999999999999999</span>);  <span class="comment">//=&gt;10000000000000000</span></span><br></pre></td></tr></table></figure>
+
+<p>同时也会有一定的安全性问题:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">9007199254740992</span> === <span class="number">9007199254740993</span>;    <span class="comment">// → true 居然是true!</span></span><br></pre></td></tr></table></figure></li>
+<li><p>如何创建并使用<code>BigInt</code>？</p>
+<p>创建<code>BigInt</code>：</p>
+<ul>
+<li>在数字末尾追加<code>n</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log( <span class="number">9007199254740995n</span> );    <span class="comment">// → 9007199254740995n</span></span><br><span class="line"><span class="built_in">console</span>.log( <span class="number">9007199254740995</span> );     <span class="comment">// → 9007199254740996</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>用<code>BigInt()</code>构造函数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">BigInt</span>(<span class="string">&quot;9007199254740995&quot;</span>);    <span class="comment">// → 9007199254740995n</span></span><br></pre></td></tr></table></figure>
+
+<p>简单使用如下:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10n</span> + <span class="number">20n</span>;    <span class="comment">// → 30n</span></span><br><span class="line"><span class="number">10n</span> - <span class="number">20n</span>;    <span class="comment">// → -10n</span></span><br><span class="line">+<span class="number">10n</span>;         <span class="comment">// → TypeError: Cannot convert a BigInt value to a number</span></span><br><span class="line">-<span class="number">10n</span>;         <span class="comment">// → -10n</span></span><br><span class="line"><span class="number">10n</span> * <span class="number">20n</span>;    <span class="comment">// → 200n</span></span><br><span class="line"><span class="number">20n</span> / <span class="number">10n</span>;    <span class="comment">// → 2n</span></span><br><span class="line"><span class="number">23n</span> % <span class="number">10n</span>;    <span class="comment">// → 3n</span></span><br><span class="line"><span class="number">10n</span> ** <span class="number">3n</span>;    <span class="comment">// → 1000n</span></span><br><span class="line"><span class="keyword">const</span> x = <span class="number">10n</span>;    </span><br><span class="line">++x;          <span class="comment">// → 11n</span></span><br><span class="line">--x;          <span class="comment">// → 9n</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> x);   <span class="comment">//&quot;bigint&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>值得警惕的点</strong></p>
+<ol>
+<li>BigInt不支持一元加号运算符, 这可能是某些程序可能依赖于 + 始终生成 <code>Number</code> 的不变量，或者抛出异常；另外，更改 + 的行为也会破坏 asm.js代码</li>
+<li>因为隐式类型转换可能丢失信息，所以不允许在<code>BigInt</code>和<code>Number</code>之间进行混合操作；当混合使用大整数和浮点数时，结果值可能无法由<code>BigInt</code>或<code>Number</code>精确表示</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span> + <span class="number">10n</span>;    <span class="comment">// → TypeError</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>不能将BigInt传递给Web api和内置的 JS 函数，这些函数需要一个 <code>Number</code> 类型的数字</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.max(<span class="number">2n</span>, <span class="number">4n</span>, <span class="number">6n</span>);    <span class="comment">// → TypeError</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><p>当 <code>Boolean</code> 类型与 <code>BigInt</code> 类型相遇时，BigInt的处理方式与<code>Number</code>类似，换句话说，只要不是<code>0n</code>，<code>BigInt</code>就被视为<code>truthy</code>的值</p>
+</li>
+<li><p>元素都为<code>BigInt</code>的数组可以进行<code>sort</code></p>
+</li>
+<li><p><code>BigInt</code>可以正常地进行位运算，如<code>|</code>、<code>&amp;</code>、<code>&lt;&lt;</code>、<code>&gt;&gt;</code>和<code>^</code></p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="复杂"><a href="#复杂" class="headerlink" title="复杂"></a>复杂</h3><h4 id="Object"><a href="#Object" class="headerlink" title="Object"></a><code>Object</code></h4><p>在计算机科学中, 对象是指内存中的可以被标识符引用的一块区域</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p>“ <u>无序属性的集合</u>，其属性可以包含基本值、对象或函数 ”，相当于对象是一组没有特定顺序的值，可以想象成<strong>散列表</strong>， 一组键值对，其中键值可以是一个字符串或者符号值（<code>Symbol</code>），值可以是数据或函数</p>
+<p><u>每个对象都是基于一个引用类型创建的</u>，这个引用类型可以是原生类型或是开发人员定义的类型</p>
+<h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><p>属性在创建时都带有一些<strong>特征值</strong>，JS通过特征值<u>定义属性的行为</u>，用于实现JS引擎，是内部值，用<code>[[]]</code>表示</p>
+<h5 id="数据属性"><a href="#数据属性" class="headerlink" title="数据属性"></a>数据属性</h5><p>数据属性是键值对，并且每个数据属性拥有下列特性：</p>
+<p><strong>数据属性的特性</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">特性</th>
+<th align="left">数据类型</th>
+<th align="left">描述</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>[[Value]]</code></td>
+<td align="left">任何JS类型</td>
+<td align="left">该属性的数据值</td>
+<td align="left"><code>undefined</code></td>
+</tr>
+<tr>
+<td align="left"><code>[[Writable]]</code></td>
+<td align="left"><code>Boolean</code></td>
+<td align="left"><u>可更改性</u>，如果该值为 <code>false，</code>则该属性的<code>[[Value]]</code>特性不能被改变</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left"><code>[[Enumerable]]</code></td>
+<td align="left"><code>Boolean</code></td>
+<td align="left"><u>可枚举性</u>，如果该值为 <code>true</code>，则该属性可以用 <code>for...in</code>循环来枚举</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left"><code>[[Configurable]]</code></td>
+<td align="left"><code>Boolean</code></td>
+<td align="left"><u>可配置性</u>，如果该值为 <code>false</code>，则该属性不能被删除，并且除 <code>[[Value]]</code> 和 <code>[[Writable]]</code> 以外的特性都不能被改变</td>
+<td align="left"><code>false</code></td>
+</tr>
+</tbody></table>
+<h5 id="访问器属性"><a href="#访问器属性" class="headerlink" title="访问器属性"></a>访问器属性</h5><p>访问器属性不包含数据值，包含一个或一对访问器函数（ <code>getter、settter</code>函数）来存取数值（非必需）</p>
+<p>访问器属性常见方式：设置一个属性的值会导致其它属性发生变化</p>
+<p><code>[[Configurable]]、[[Enumerable]]、[[Get]]、[[Set]]</code></p>
+<p>访问器属性不能直接定义，只能用<code>Object.defineProperty()</code>定义</p>
+<table>
+<thead>
+<tr>
+<th align="left">特性</th>
+<th align="left">类型</th>
+<th align="left">描述</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>[[Get]]</code></td>
+<td align="left"><code>Function</code>或 <code>undefined</code></td>
+<td align="left">该函数使用一个空的参数列表，能够在有权访问的情况下<u>读取</u>属性值</td>
+<td align="left"><code>undefined</code></td>
+</tr>
+<tr>
+<td align="left"><code>[[Set]]</code></td>
+<td align="left"><code>Function</code>或 <code>undefined</code></td>
+<td align="left">该函数有一个参数，用来<u>写入</u>属性值</td>
+<td align="left"><code>undefined</code></td>
+</tr>
+<tr>
+<td align="left"><code>[[Enumerable]]</code></td>
+<td align="left"><code>Boolean</code></td>
+<td align="left"><u>可枚举性</u>，如果该值为 <code>true</code>，则该属性可以用<code>for...in</code>循环来枚举。</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left"><code>[[Configurable]]</code></td>
+<td align="left"><code>Boolean</code></td>
+<td align="left"><u>可配置性</u>，如果该值为 <code>false</code>，则该属性不能被删除，并且不能被转变成一个数据属性</td>
+<td align="left"><code>false</code></td>
+</tr>
+</tbody></table>
+<h5 id="属性相关方法"><a href="#属性相关方法" class="headerlink" title="属性相关方法"></a>属性相关方法</h5><ul>
+<li><u>修改属性默认的特性</u>，必须用<code>Object.defineProperty()</code>，该方法也可用于<u>创建新属性</u></li>
+<li><u>定义多个属性</u><code>Object.defineProperties()</code></li>
+<li><u>读取属性特性</u><code>Object.getOwnPropertyDescriptor()</code></li>
+</ul>
+<h4 id="标准内置对象"><a href="#标准内置对象" class="headerlink" title="标准内置对象"></a>标准内置对象</h4><table>
+<thead>
+<tr>
+<th>分类</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>基本对象</td>
+<td><code>Object</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>Function</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>Boolean</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>Symbol</code></td>
+</tr>
+<tr>
+<td></td>
+<td>错误对象</td>
+</tr>
+<tr>
+<td>数字和日期对象</td>
+<td><code>Number</code>、 <code>BigInt</code> 、<code>Date</code>、 <code>Math</code></td>
+</tr>
+<tr>
+<td>字符串对象</td>
+<td><code>String</code>、 <code>RegExp</code></td>
+</tr>
+<tr>
+<td>可索引的集合对象</td>
+<td><code>Array</code> 、类型数组</td>
+</tr>
+<tr>
+<td>使用键的集合对象</td>
+<td><code>Map</code> <code>Set</code> <code>WeakMap</code> <code>WeakSet</code></td>
+</tr>
+<tr>
+<td>结构化数据</td>
+<td><code>ArrayBuffer</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>JSON</code></td>
+</tr>
+<tr>
+<td>控制抽象对象</td>
+<td><code>Promise</code>、<code>Generator</code>、<code>GeneratorFunction</code>、<code>AsyncFunction</code></td>
+</tr>
+<tr>
+<td>反射</td>
+<td><code>Reflect</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>Proxy</code></td>
+</tr>
+<tr>
+<td>值属性</td>
+<td></td>
+</tr>
+<tr>
+<td>函数属性</td>
+<td></td>
+</tr>
+<tr>
+<td>其它</td>
+<td><code>arguments</code></td>
+</tr>
+</tbody></table>
+<h3 id="基本-引用类型值的区别"><a href="#基本-引用类型值的区别" class="headerlink" title="基本 / 引用类型值的区别"></a>基本 / 引用类型值的区别</h3><p>除 <code>Object</code> 以外的所有类型都是不可变的（值本身无法被改变）。例如，与 C 语言不同，JavaScript 中字符串是不可变的；我们称这些类型的值为“<strong>原始值</strong>”。</p>
+<p>将一个值赋给变量时，必须先确定该值是基本类型值还是引用类型值，<u>保存方式</u>不同</p>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>基本类型值</th>
+<th>引用类型值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>含义</strong></td>
+<td>简单数据段</td>
+<td>多值构成，保存在内存中的对象</td>
+</tr>
+<tr>
+<td><strong>存储</strong></td>
+<td>栈</td>
+<td>堆</td>
+</tr>
+<tr>
+<td><strong>操作</strong></td>
+<td>1. 按值访问，可以操作保存在变量中实际的值 2.不能添加属性</td>
+<td>1. 按引用访问，操作的是对象的引用（JS中不能直接访问内存中的位置，即不能直接操作对象的内存空间）2. 可以动态添加、改变、删除其属性和方法</td>
+</tr>
+<tr>
+<td><strong>复制 (赋值)</strong></td>
+<td>在变量对象上创建一个新值，再把该值复制到为新变量分配的位置上</td>
+<td>值的副本是一个指针，指向存储在堆中的一个对象 =&gt; 两个变量将引用同一个对象</td>
+</tr>
+<tr>
+<td><a name="parameter"><strong>传递参数</strong></a></td>
+<td><strong>所有函数的参数都是按值传递 把函数外部的值复制给函数内参数相当于变量的复制</strong> 被传递的值复制给一个局部变量（即命名参数，<code>arguments</code>对象中的元素）</td>
+<td>被传递的值在内存中的地址复制给一个局部变量(该局部变量的变化会反映在函数外部 并不意味着是引用传递 引用不会另外分配内存 只是一个别称)</td>
+</tr>
+</tbody></table>
+<h3 id="检测类型"><a href="#检测类型" class="headerlink" title="检测类型"></a>检测类型</h3><ul>
+<li><p><strong>基本数据类型</strong>：<code>typeof</code>操作符<br><code>typeof</code> 对于基本类型，除了<code>null</code> 都可以显示正确的类型</p>
+<p><code>typeof</code> 对于对象，<u>除了函数</u>都会显示 <code>object</code></p>
+</li>
+<li><p>**对象 (引用数据类型)**：<code>instanceof</code>操作符：<code>result = variable instanceof constructor</code></p>
+</li>
+<li><p>想获得一个变量的正确类型，可以通过 <code>Object.prototype.toString.call()</code> =&gt; 可以获得类似 <code>[object Type]</code> 的字符串</p>
+</li>
+</ul>
+<blockquote>
+<p><code>instanceof</code>的原理是基于原型链的查询，只要处于原型链中，判断永远为true</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Person = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> Person();</span><br><span class="line">p1 <span class="keyword">instanceof</span> Person; <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str1 = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line">str1 <span class="keyword">instanceof</span> <span class="built_in">String</span>; <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str2 = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">&#x27;hello world&#x27;</span>);</span><br><span class="line">str2 <span class="keyword">instanceof</span> <span class="built_in">String</span>; <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><p>JS中，类型转换只有三种：</p>
+<ul>
+<li>转换成数字</li>
+<li>转换成布尔值</li>
+<li>转换成字符串</li>
+</ul>
+<p>转换具体规则如下:</p>
+<blockquote>
+<p>注意”<code>Boolean</code> 转字符串”这行结果指的是 true 转字符串的例子</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Number</code> =&gt; <code>Boolean</code></td>
+<td>除<code>0</code>、<code>-0</code>、<code>NaN</code>都为<code>true</code></td>
+</tr>
+<tr>
+<td><code>String</code> =&gt; <code>Boolean</code></td>
+<td>除<code>&#39;&#39;</code>都为<code>true</code></td>
+</tr>
+<tr>
+<td><code>undefined</code>、<code>null</code> =&gt; <code>Boolean</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>引用类型 =&gt; <code>Boolean</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Number</code> =&gt; <code>String</code></td>
+<td><code>5</code> =&gt; <code>&#39;5&#39;</code></td>
+</tr>
+<tr>
+<td><code>Boolean</code>、<code>Function</code>、<code>Symbol</code> =&gt; <code>String</code></td>
+<td><code>&#39;true&#39;</code></td>
+</tr>
+<tr>
+<td><code>Array</code> =&gt; <code>String</code></td>
+<td><code>[1,2]</code> =&gt; <code>&#39;1,2&#39;</code></td>
+</tr>
+<tr>
+<td><code>Object</code> =&gt; <code>String</code></td>
+<td><code>&#39;[object Object]&#39;</code></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>String</code> =&gt; <code>Number</code></td>
+<td><code>&#39;1&#39;</code> =&gt; <code>1</code> <code>&#39;a&#39;</code> =&gt; <code>NaN</code></td>
+</tr>
+<tr>
+<td><code>Array</code> =&gt; <code>Number</code></td>
+<td><code>[]</code> =&gt; <code>0</code> <code>[5]</code> =&gt; <code>5</code> 其它 =&gt; <code>NaN</code></td>
+</tr>
+<tr>
+<td><code>null</code> =&gt; <code>Number</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td>除<code>Array</code>外的引用类型</td>
+<td><code>NaN</code></td>
+</tr>
+<tr>
+<td><code>Symbol</code> =&gt; <code>Number</code></td>
+<td>抛错</td>
+</tr>
+</tbody></table>
+<h4 id="转Boolean"><a href="#转Boolean" class="headerlink" title="转Boolean"></a>转Boolean</h4><p>在条件判断时，除了 <code>undefined</code>， <code>null</code>， <code>false</code>， <code>NaN</code>， <code>&#39;&#39;</code>， <code>0</code>， <code>-0</code>，其他所有值都转为 <code>true</code>，包括所有对象。</p>
+<h4 id="对象转基本类型"><a href="#对象转基本类型" class="headerlink" title="对象转基本类型"></a>对象转基本类型</h4><p>对象转原始类型，会调用内置的<code>[ToPrimitive]</code>函数，对于该函数而言，其逻辑如下：</p>
+<ol>
+<li>如果<code>Symbol.toPrimitive()</code>方法，优先调用再返回</li>
+<li>调用<code>valueOf()</code>，如果转换为原始类型，则返回</li>
+<li>调用<code>toString()</code>，如果转换为原始类型，则返回</li>
+<li>如果都没有返回原始类型，会报错</li>
+</ol>
+<p>可以重写  <code>Symbol.toPrimitive</code> 、<code>valueOf</code> 、 <code>toString</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;  </span><br><span class="line">    value: <span class="number">3</span>,  </span><br><span class="line">    <span class="function"><span class="title">valueOf</span>(<span class="params"></span>)</span> &#123;    </span><br><span class="line">        <span class="keyword">return</span> <span class="number">4</span>;  </span><br><span class="line">    &#125;,  </span><br><span class="line">    <span class="function"><span class="title">toString</span>(<span class="params"></span>)</span> &#123;    </span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;5&#x27;</span>  </span><br><span class="line">    &#125;,  </span><br><span class="line">    [<span class="built_in">Symbol</span>.toPrimitive]() &#123;    </span><br><span class="line">        <span class="keyword">return</span> <span class="number">6</span>  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(obj + <span class="number">1</span>); <span class="comment">// 输出7</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="四则运算符"><a href="#四则运算符" class="headerlink" title="四则运算符"></a>四则运算符</h4><p>只有当<u>加法运算</u>时，其中一方是字符串类型，就会把另一个也转为字符串类型；</p>
+<p>其他运算只要其中一方是数字，那么另一方就转为数字；</p>
+<p>加法运算会触发三种类型转换：将值转换为原始值，转换为数字，转换为字符串。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> + <span class="string">&#x27;1&#x27;</span> <span class="comment">// &#x27;11&#x27;</span></span><br><span class="line"><span class="number">2</span> * <span class="string">&#x27;2&#x27;</span> <span class="comment">// 4</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>] + [<span class="number">2</span>, <span class="number">1</span>] <span class="comment">// &#x27;1,22,1&#x27;</span></span><br><span class="line"><span class="comment">// [1, 2].toString() -&gt; &#x27;1,2&#x27;</span></span><br><span class="line"><span class="comment">// [2, 1].toString() -&gt; &#x27;2,1&#x27;</span></span><br><span class="line"><span class="comment">// &#x27;1,2&#x27; + &#x27;2,1&#x27; = &#x27;1,22,1&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>对于加号需要注意这个表达式 <code>&#39;a&#39; + + &#39;b&#39;</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;a&#x27;</span> + + <span class="string">&#x27;b&#x27;</span> <span class="comment">// -&gt; &quot;aNaN&quot;</span></span><br><span class="line"><span class="comment">// 因为 + &#x27;b&#x27; -&gt; NaN</span></span><br><span class="line"><span class="comment">// 你也许在一些代码中看到过 + &#x27;1&#x27; -&gt; 1</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="操作符"><a href="#操作符" class="headerlink" title="== 操作符"></a><code>==</code> 操作符</h4><ul>
+<li>两边的类型是否相同，相同的话就比较值的大小</li>
+<li>判断的是否是<code>null</code>和<code>undefined</code>，是的话就返回<code>true</code></li>
+<li>判断的类型是否是<code>String</code>和<code>Number</code>，是的话，把<code>String</code>类型转换成<code>Number</code>，再进行比较</li>
+<li>判断其中一方是否是<code>Boolean</code>，是的话就把<code>Boolean</code>转换成<code>Number</code>，再进行比较</li>
+<li>如果其中一方为<code>Object</code>，且另一方为<code>String</code>、<code>Number</code>或者<code>Symbol</code>，会将<code>Object</code>转换成字符串，再进行比较</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(&#123;<span class="attr">a</span>: <span class="number">1</span>&#125; == <span class="literal">true</span>); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(&#123;<span class="attr">a</span>: <span class="number">1</span>&#125; == <span class="string">&quot;[object Object]&quot;</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</div></article><div class="post-sidebar"> <div class="sidebar"><div class="tocbot"><h2>纲要</h2><div class="toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#var-let-const"><span class="toc-number">1.</span> <span class="toc-text">var &#x2F; let &#x2F; const</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC"><span class="toc-number">2.1.</span> <span class="toc-text">基本</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Undefined"><span class="toc-number">2.1.1.</span> <span class="toc-text">Undefined</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Null"><span class="toc-number">2.1.2.</span> <span class="toc-text">Null</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Boolean"><span class="toc-number">2.1.3.</span> <span class="toc-text">Boolean</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Number"><span class="toc-number">2.1.4.</span> <span class="toc-text">Number</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#String"><span class="toc-number">2.1.5.</span> <span class="toc-text">String</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Symbol"><span class="toc-number">2.1.6.</span> <span class="toc-text">Symbol</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BigInt"><span class="toc-number">2.1.7.</span> <span class="toc-text">BigInt</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82"><span class="toc-number">2.2.</span> <span class="toc-text">复杂</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Object"><span class="toc-number">2.2.1.</span> <span class="toc-text">Object</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-number">3.</span> <span class="toc-text">变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.1.</span> <span class="toc-text">对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7"><span class="toc-number">3.1.1.</span> <span class="toc-text">属性</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%B1%9E%E6%80%A7"><span class="toc-number">3.1.1.1.</span> <span class="toc-text">数据属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E5%99%A8%E5%B1%9E%E6%80%A7"><span class="toc-number">3.1.1.2.</span> <span class="toc-text">访问器属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E7%9B%B8%E5%85%B3%E6%96%B9%E6%B3%95"><span class="toc-number">3.1.1.3.</span> <span class="toc-text">属性相关方法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.1.2.</span> <span class="toc-text">标准内置对象</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%80%BC%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.2.</span> <span class="toc-text">基本 &#x2F; 引用类型值的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.3.</span> <span class="toc-text">检测类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">3.4.</span> <span class="toc-text">类型转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%ACBoolean"><span class="toc-number">3.4.1.</span> <span class="toc-text">转Boolean</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E8%BD%AC%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.4.2.</span> <span class="toc-text">对象转基本类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">3.4.3.</span> <span class="toc-text">四则运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-number">3.4.4.</span> <span class="toc-text">&#x3D;&#x3D; 操作符</span></a></li></ol></li></ol></li></ol></div></div><h2>分类</h2><div class="sidebar__categories"><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/codes/">codes</a></li></ul></div><h2>标签</h2><div class="sidebar__tags"><ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul></div><h2>归档</h2><div class="sidebar__archives"><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li></ul></div></div></div></div><div id="paginator"></div></div></div></div></div></div><div id="bottom-outer"><div id="bottom-inner"><span>©️2021 Designed By </span><span> 玉面小飞狐 </span><span>Powered By </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span>.</span></div></div></body></html>
